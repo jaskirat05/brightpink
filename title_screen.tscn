@@ -1,12 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxk5dgtmm7nc7"]
+[gd_scene load_steps=20 format=3 uid="uid://kkwcrdwkx3hq"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_4di8y"]
 [ext_resource type="Texture2D" uid="uid://btywvnc7bjr3v" path="res://Assets/Images/BackDrop1.PNG" id="2_7mis8"]
 [ext_resource type="Texture2D" uid="uid://caahwk6l67l00" path="res://Assets/Images/Background1.PNG" id="3_scn5c"]
 [ext_resource type="Texture2D" uid="uid://b5qya06k1wt8f" path="res://Assets/Images/Midground1.PNG" id="4_1218r"]
 [ext_resource type="Texture2D" uid="uid://glqx7kked68d" path="res://Assets/Images/Foreground1.PNG" id="5_wqcst"]
-[ext_resource type="PackedScene" uid="uid://c5yyn2qxiwtcs" path="res://tree.tscn" id="6_81ce4"]
 [ext_resource type="Texture2D" uid="uid://dyoa7dx56jf5n" path="res://Assets/Images/TreeSapling1.PNG" id="7_at7eu"]
+[ext_resource type="AudioStream" uid="uid://big7ax5b2sifn" path="res://Assets/Audio/Atmospheric SFX_Winds_V01.wav" id="8_oipbw"]
 [ext_resource type="FontFile" uid="uid://cptoivc0vo3b" path="res://Assets/SuperRugged-4nBy9.ttf" id="8_tf6cs"]
 
 [sub_resource type="Animation" id="Animation_jhp20"]
@@ -149,43 +149,6 @@ _data = {
 "fade_in": SubResource("Animation_sw58t")
 }
 
-[sub_resource type="Animation" id="Animation_qng5w"]
-resource_name = "fade_to_normal"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_colors/default_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(60, -0.25, 0, 0.25, 0, 70, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(247, -0.25, 0, 0.25, 0, 247, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
 [sub_resource type="Animation" id="Animation_6duny"]
 length = 0.001
 tracks/0/type = "value"
@@ -223,6 +186,43 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_qng5w"]
+resource_name = "fade_to_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(60, -0.25, 0, 0.25, 0, 70, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(247, -0.25, 0, 0.25, 0, 247, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rtqtv"]
 _data = {
 "RESET": SubResource("Animation_6duny"),
@@ -249,21 +249,16 @@ texture = ExtResource("4_1218r")
 position = Vector2(971, -6627)
 texture = ExtResource("5_wqcst")
 
-[node name="Tree" parent="." instance=ExtResource("6_81ce4")]
-unique_name_in_owner = true
-position = Vector2(978, 791)
+[node name="TitleTree" type="Sprite2D" parent="."]
+position = Vector2(1000, -6639)
 texture = ExtResource("7_at7eu")
-
-[node name="Camera" type="Camera2D" parent="Tree"]
-unique_name_in_owner = true
-position = Vector2(-11.2333, -284.004)
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
 [node name="FadeTransitions" type="ColorRect" parent="UI Layer"]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -306,5 +301,10 @@ libraries = {
 "": SubResource("AnimationLibrary_rtqtv")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_oipbw")
+
+[connection signal="gui_input" from="Title2" to="." method="_on_title_2_gui_input"]
 [connection signal="mouse_entered" from="Title2" to="." method="_on_title_2_mouse_entered"]
 [connection signal="mouse_exited" from="Title2" to="." method="_on_title_2_mouse_exited"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

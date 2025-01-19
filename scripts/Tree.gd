@@ -98,6 +98,7 @@ func spawn_bird():
 	print("Bird spawned with speed: ", bird.speed)
 
 func take_damage(amount: int) -> void:
+	$AudioStreamPlayer.play()
 	health -= amount
 	health = max(0, health)
 	print("Tree took damage! Health: ", health)

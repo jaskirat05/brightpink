@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpw83qpni1ym4"]
+[gd_scene load_steps=10 format=3 uid="uid://bpw83qpni1ym4"]
 
 [ext_resource type="Script" path="res://scripts/TERMITE.gd" id="1_2u5cf"]
 [ext_resource type="Texture2D" uid="uid://b22soeny3rj3h" path="res://Assets/placeholders/Flux_00014_-removebg-preview.png" id="2_ixorq"]
+[ext_resource type="AudioStream" uid="uid://dy3lv8k1vo3p6" path="res://Assets/Audio/Attack SFX_Swoosh_V01.wav" id="3_vdmdi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hr7j"]
 atlas = ExtResource("2_ixorq")
@@ -61,3 +62,6 @@ progress = 0.3
 position = Vector2(-1, 12)
 scale = Vector2(3.26354, 3.49546)
 shape = SubResource("CircleShape2D_8q43x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vdmdi")
