@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://emsy0mv7fwlb"]
+[gd_scene load_steps=15 format=3 uid="uid://clapf8hh0pyj3"]
 
 [ext_resource type="Script" path="res://MainGame.gd" id="1_hhc68"]
 [ext_resource type="Texture2D" uid="uid://btywvnc7bjr3v" path="res://Assets/Images/BackDrop1.PNG" id="2_32e8k"]
@@ -6,15 +6,16 @@
 [ext_resource type="FontFile" uid="uid://c5jxdu8llire" path="res://Assets/MotleyForcesRegular-w1rZ3.ttf" id="3_ved3i"]
 [ext_resource type="Texture2D" uid="uid://glqx7kked68d" path="res://Assets/Images/Foreground1.PNG" id="4_j0b2r"]
 [ext_resource type="Texture2D" uid="uid://b5qya06k1wt8f" path="res://Assets/Images/Midground1.PNG" id="4_sjgso"]
-[ext_resource type="PackedScene" uid="uid://c5yyn2qxiwtcs" path="res://tree.tscn" id="6_kfsk6"]
+[ext_resource type="PackedScene" uid="uid://bcnu3niqi3vd3" path="res://tree.tscn" id="6_kfsk6"]
 [ext_resource type="PackedScene" uid="uid://bmr3l45hllibk" path="res://Collectible.tscn" id="7_gs5ny"]
+[ext_resource type="Script" path="res://BlackFadeBox.gd" id="8_ouh2g"]
 
-[sub_resource type="Animation" id="Animation_jhp20"]
+[sub_resource type="Animation" id="Animation_4uhl0"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI Layer/FadeTransitions:color")
+tracks/0/path = NodePath("MainGame/UI Layer/BlackFadeBox:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,12 +25,12 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_hvicr"]
+[sub_resource type="Animation" id="Animation_c4kps"]
 resource_name = "fade_to_black"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI Layer/FadeTransitions:color")
+tracks/0/path = NodePath("MainGame/UI Layer/BlackFadeBox:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -39,12 +40,12 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_f4vde"]
+[sub_resource type="Animation" id="Animation_e3tu5"]
 resource_name = "fade_to_normal"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI Layer/FadeTransitions:color")
+tracks/0/path = NodePath("MainGame/UI Layer/BlackFadeBox:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,11 +55,11 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lto51"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ie42"]
 _data = {
-"RESET": SubResource("Animation_jhp20"),
-"fade_to_black": SubResource("Animation_hvicr"),
-"fade_to_normal": SubResource("Animation_f4vde")
+"RESET": SubResource("Animation_4uhl0"),
+"fade_to_black": SubResource("Animation_c4kps"),
+"fade_to_normal": SubResource("Animation_e3tu5")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_msoi1"]
@@ -96,16 +97,19 @@ unique_name_in_owner = true
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
-[node name="FadeTransitions" type="ColorRect" parent="UI Layer"]
+[node name="BlackFadeBox" type="ColorRect" parent="UI Layer"]
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
+script = ExtResource("8_ouh2g")
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI Layer/FadeTransitions"]
-root_node = NodePath("../../..")
+[node name="BlackFadeAnimationPlayer" type="AnimationPlayer" parent="UI Layer/BlackFadeBox"]
+unique_name_in_owner = true
+root_node = NodePath("../../../..")
 libraries = {
-"": SubResource("AnimationLibrary_lto51")
+"": SubResource("AnimationLibrary_3ie42")
 }
 
 [node name="HeightCounter" type="Label" parent="UI Layer"]
