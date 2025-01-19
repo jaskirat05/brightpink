@@ -1,18 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://c644ifemo3t2c"]
+[gd_scene load_steps=14 format=3 uid="uid://emsy0mv7fwlb"]
 
 [ext_resource type="Script" path="res://MainGame.gd" id="1_hhc68"]
 [ext_resource type="Texture2D" uid="uid://btywvnc7bjr3v" path="res://Assets/Images/BackDrop1.PNG" id="2_32e8k"]
 [ext_resource type="Texture2D" uid="uid://caahwk6l67l00" path="res://Assets/Images/Background1.PNG" id="3_cdcmm"]
 [ext_resource type="FontFile" uid="uid://c5jxdu8llire" path="res://Assets/MotleyForcesRegular-w1rZ3.ttf" id="3_ved3i"]
 [ext_resource type="Texture2D" uid="uid://glqx7kked68d" path="res://Assets/Images/Foreground1.PNG" id="4_j0b2r"]
-[ext_resource type="Texture2D" uid="uid://co2lwhem0m6x7" path="res://Assets/Images/BelowTree1.PNG" id="4_tgc7f"]
+[ext_resource type="Texture2D" uid="uid://b5qya06k1wt8f" path="res://Assets/Images/Midground1.PNG" id="4_sjgso"]
+[ext_resource type="PackedScene" uid="uid://c5yyn2qxiwtcs" path="res://tree.tscn" id="6_kfsk6"]
+[ext_resource type="PackedScene" uid="uid://bmr3l45hllibk" path="res://Collectible.tscn" id="7_gs5ny"]
 
 [sub_resource type="Animation" id="Animation_4uhl0"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI Layer/BlackFadeBox:color")
+tracks/0/path = NodePath("MainGame/UI Layer/BlackFadeBox:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +29,7 @@ resource_name = "fade_to_black"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI Layer/BlackFadeBox:color")
+tracks/0/path = NodePath("MainGame/UI Layer/BlackFadeBox:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,7 +44,7 @@ resource_name = "fade_to_normal"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI Layer/BlackFadeBox:color")
+tracks/0/path = NodePath("MainGame/UI Layer/BlackFadeBox:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -66,62 +68,36 @@ font_size = 33
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_hhc68")
 
-[node name="PictureControl" type="HBoxContainer" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 960.0
-offset_top = 1080.0
-offset_right = 960.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Background" type="Sprite2D" parent="PictureControl"]
+[node name="Background" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-5, -7955)
+position = Vector2(971, -6627)
 texture = ExtResource("2_32e8k")
-metadata/_edit_lock_ = true
 
-[node name="Trees" type="Sprite2D" parent="PictureControl"]
-position = Vector2(-5, -7955)
+[node name="Trees" type="Sprite2D" parent="."]
+position = Vector2(971, -6627)
 texture = ExtResource("3_cdcmm")
-metadata/_edit_lock_ = true
 
-[node name="FarBackgroundUnfinished" type="Sprite2D" parent="PictureControl"]
-position = Vector2(-5, -7955)
+[node name="Midground" type="Sprite2D" parent="."]
+position = Vector2(971, -6627)
+texture = ExtResource("4_sjgso")
+
+[node name="Foreground" type="Sprite2D" parent="."]
+position = Vector2(971, -6627)
 texture = ExtResource("4_j0b2r")
-metadata/_edit_lock_ = true
 
-[node name="TreeControl" type="Control" parent="."]
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.85
-anchor_right = 0.5
-anchor_bottom = 0.85
-offset_left = 962.0
-offset_top = 543.0
-offset_right = 1002.0
-offset_bottom = 583.0
-
-[node name="Tree" type="Sprite2D" parent="TreeControl"]
+[node name="Tree" parent="." instance=ExtResource("6_kfsk6")]
 unique_name_in_owner = true
-position = Vector2(14.0001, -6206)
-scale = Vector2(1.06825, 0.887313)
-texture = ExtResource("4_tgc7f")
-metadata/_edit_lock_ = true
+position = Vector2(978, 791)
 
-[node name="Camera" type="Camera2D" parent="TreeControl/Tree"]
+[node name="Camera" type="Camera2D" parent="Tree"]
 unique_name_in_owner = true
-position = Vector2(-13.1056, 6994.15)
-scale = Vector2(0.93611, 1.127)
-metadata/_edit_lock_ = true
+
+[node name="Collectible" parent="." instance=ExtResource("7_gs5ny")]
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
 [node name="BlackFadeBox" type="ColorRect" parent="UI Layer"]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
@@ -129,7 +105,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BlackFadeAnimationPlayer" type="AnimationPlayer" parent="UI Layer/BlackFadeBox"]
 unique_name_in_owner = true
-root_node = NodePath("../../..")
+root_node = NodePath("../../../..")
 libraries = {
 "": SubResource("AnimationLibrary_3ie42")
 }
@@ -140,5 +116,8 @@ offset_left = 1645.0
 offset_top = 35.0
 offset_right = 1798.0
 offset_bottom = 62.0
-text = "Height: 72"
+text = "Height: 0"
 label_settings = SubResource("LabelSettings_msoi1")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="input_event" from="Collectible" to="." method="_on_collectible_input_event"]
