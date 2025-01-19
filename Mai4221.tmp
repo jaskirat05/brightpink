@@ -1,0 +1,169 @@
+[gd_scene load_steps=14 format=3 uid="uid://dwfq736c8gomv"]
+
+[ext_resource type="Script" path="res://MainGame.gd" id="1_hhc68"]
+[ext_resource type="Texture2D" uid="uid://btywvnc7bjr3v" path="res://Assets/Images/BackDrop1.PNG" id="2_32e8k"]
+[ext_resource type="Texture2D" uid="uid://caahwk6l67l00" path="res://Assets/Images/Background1.PNG" id="3_cdcmm"]
+[ext_resource type="FontFile" uid="uid://c5jxdu8llire" path="res://Assets/MotleyForcesRegular-w1rZ3.ttf" id="3_ved3i"]
+[ext_resource type="Texture2D" uid="uid://glqx7kked68d" path="res://Assets/Images/Foreground1.PNG" id="4_j0b2r"]
+[ext_resource type="Texture2D" uid="uid://co2lwhem0m6x7" path="res://Assets/Images/BelowTree1.PNG" id="4_tgc7f"]
+[ext_resource type="PackedScene" uid="uid://mgrbv6bq1e8j" path="res://scenes/Termite.tscn" id="4_yjt7r"]
+
+[sub_resource type="Curve2D" id="Curve2D_j1o7a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -51.4862, 7261.25, 44.5292, 24.8546, -44.5292, -24.8546, 25.2748, 7204.9, 1.11323, 47.6671, -1.11323, -47.6671, -39.3168, 7168.83, 13.3588, -56.2498, -13.3588, 56.2498, 20.5943, 7128.75, 0, 0, 0, 0, -41.189, 7079.76, -20.0381, 96.802, 20.0381, -96.802, 14.0415, 7086.44, 0, 0, 0, 0, 16.8499, 7031.88, 0, 0, 0, 0, 2.80817, 7045.44, -38.963, 48.4808, 38.963, -48.4808, -19.6584, 7046.36, 0, 0, 0, 0, -47.7418, 7008.5, 0, 0, 0, 0, 13.1054, 7134.55, -60.1144, 37.9359, 60.1144, -37.9359, 1.87207, 7179.65, 0, 0, 0, 0, 58.0387, 6912.31)
+}
+point_count = 13
+
+[sub_resource type="Animation" id="Animation_4uhl0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI Layer/BlackFadeBox:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c4kps"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI Layer/BlackFadeBox:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e3tu5"]
+resource_name = "fade_to_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI Layer/BlackFadeBox:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ie42"]
+_data = {
+"RESET": SubResource("Animation_4uhl0"),
+"fade_to_black": SubResource("Animation_c4kps"),
+"fade_to_normal": SubResource("Animation_e3tu5")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_msoi1"]
+font = ExtResource("3_ved3i")
+font_size = 33
+
+[node name="MainGame" type="Node2D"]
+script = ExtResource("1_hhc68")
+
+[node name="PictureControl" type="HBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 1080.0
+offset_right = 960.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="Sprite2D" parent="PictureControl"]
+unique_name_in_owner = true
+position = Vector2(-5, -7955)
+texture = ExtResource("2_32e8k")
+metadata/_edit_lock_ = true
+
+[node name="Trees" type="Sprite2D" parent="PictureControl"]
+position = Vector2(-5, -7955)
+texture = ExtResource("3_cdcmm")
+
+[node name="FarBackgroundUnfinished" type="Sprite2D" parent="PictureControl"]
+position = Vector2(-5, -7955)
+texture = ExtResource("4_j0b2r")
+metadata/_edit_lock_ = true
+
+[node name="TreeControl" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.85
+anchor_right = 0.5
+anchor_bottom = 0.85
+offset_left = 962.0
+offset_top = 543.0
+offset_right = 1002.0
+offset_bottom = 583.0
+
+[node name="Tree" type="Sprite2D" parent="TreeControl"]
+unique_name_in_owner = true
+position = Vector2(14.0001, -6206)
+scale = Vector2(1.06825, 0.887313)
+texture = ExtResource("4_tgc7f")
+
+[node name="Path2D2" type="Path2D" parent="TreeControl/Tree"]
+position = Vector2(0, -178.176)
+scale = Vector2(1, 1.02454)
+curve = SubResource("Curve2D_j1o7a")
+
+[node name="Camera" type="Camera2D" parent="TreeControl/Tree"]
+unique_name_in_owner = true
+position = Vector2(-13.1056, 6994.15)
+scale = Vector2(0.93611, 1.127)
+
+[node name="Path2D" type="Path2D" parent="TreeControl/Tree"]
+position = Vector2(0, -88.5479)
+scale = Vector2(1, 1.01219)
+curve = SubResource("Curve2D_j1o7a")
+
+[node name="Path2D3" type="Path2D" parent="TreeControl/Tree"]
+position = Vector2(0, -360.724)
+scale = Vector2(1, 1.04968)
+curve = SubResource("Curve2D_j1o7a")
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="BlackFadeBox" type="ColorRect" parent="UI Layer"]
+visible = false
+offset_left = -20.0
+offset_top = 16.0
+offset_right = 1900.0
+offset_bottom = 1096.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="BlackFadeAnimationPlayer" type="AnimationPlayer" parent="UI Layer/BlackFadeBox"]
+unique_name_in_owner = true
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_3ie42")
+}
+
+[node name="HeightCounter" type="Label" parent="UI Layer"]
+unique_name_in_owner = true
+offset_left = 1645.0
+offset_top = 35.0
+offset_right = 1798.0
+offset_bottom = 62.0
+text = "Height: 72"
+label_settings = SubResource("LabelSettings_msoi1")
+
+[node name="Termite" parent="." instance=ExtResource("4_yjt7r")]
+position = Vector2(1197, -256)

@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpw83qpni1ym4"]
+
+[ext_resource type="Script" path="res://scripts/TERMITE.gd" id="1_2u5cf"]
+[ext_resource type="Texture2D" uid="uid://b22soeny3rj3h" path="res://Assets/placeholders/Flux_00014_-removebg-preview.png" id="2_ixorq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hr7j"]
+atlas = ExtResource("2_ixorq")
+region = Rect2(0, 0, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6cak"]
+atlas = ExtResource("2_ixorq")
+region = Rect2(332, 0, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swsvm"]
+atlas = ExtResource("2_ixorq")
+region = Rect2(166, 166, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1svs7"]
+atlas = ExtResource("2_ixorq")
+region = Rect2(0, 166, 166, 166)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngk2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hr7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6cak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swsvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1svs7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8q43x"]
+radius = 8.58441
+
+[node name="TERMITE" type="PathFollow2D"]
+script = ExtResource("1_2u5cf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.63798e-12, 0)
+scale = Vector2(0.693359, 0.806641)
+sprite_frames = SubResource("SpriteFrames_ngk2l")
+frame_progress = 0.282543
+flip_h = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+progress = 0.3
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 12)
+scale = Vector2(3.26354, 3.49546)
+shape = SubResource("CircleShape2D_8q43x")

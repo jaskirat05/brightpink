@@ -15,6 +15,7 @@ func _ready():
 	%Camera.offset.y = camera_offset_start
 
 	$"UI Layer/FadeTransitions/AnimationPlayer".play("fade_to_normal")
+	$"UI Layer/FadeTransitions".visible=false
 	get_window().position.y = 50 #because the stupid window bar always starts off screen
 
 
