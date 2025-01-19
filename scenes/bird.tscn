@@ -87,7 +87,7 @@ script = ExtResource("1_v6vk5")
 rotation = 1.54462
 scale = Vector2(0.776794, 1.05838)
 sprite_frames = SubResource("SpriteFrames_c2v2w")
-frame_progress = 0.508116
+frame_progress = 0.554984
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

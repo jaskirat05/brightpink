@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://cegbcmjde2k1t"]
+
+[ext_resource type="Script" path="res://scripts/tim_kid.gd" id="1_23rko"]
+[ext_resource type="Texture2D" uid="uid://5yr3rht7twrs" path="res://Assets/Images/Flux_00033_-removebg-preview.png" id="1_y5p5w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eq6o"]
+atlas = ExtResource("1_y5p5w")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl2lh"]
+atlas = ExtResource("1_y5p5w")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hy4d"]
+atlas = ExtResource("1_y5p5w")
+region = Rect2(0, 250, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14twf"]
+atlas = ExtResource("1_y5p5w")
+region = Rect2(250, 250, 250, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yseja"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eq6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl2lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hy4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14twf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="TimKID" type="PathFollow2D"]
+script = ExtResource("1_23rko")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 1)
+sprite_frames = SubResource("SpriteFrames_yseja")
+frame_progress = 0.469998
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AnimatedSprite2D"]
+offset_left = -65.0
+offset_top = -150.0
+offset_right = 27.0
+offset_bottom = -124.0
+text = "Timmy
+"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcnu3niqi3vd3"]
+[gd_scene load_steps=15 format=3 uid="uid://bcnu3niqi3vd3"]
 
 [ext_resource type="Texture2D" uid="uid://co2lwhem0m6x7" path="res://Assets/Images/BelowTree1.PNG" id="1_upvdq"]
 [ext_resource type="Script" path="res://scripts/Tree.gd" id="2_kgwrb"]
@@ -97,6 +97,12 @@ _data = {
 }
 point_count = 7
 
+[sub_resource type="Curve2D" id="Curve2D_u72pu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 818.161, -30.429, 0, 0, 0, 0, 705.827, -34.937, 0, 0, 0, 0, 580.389, -32.683, 0, 0, 0, 0, 451.205, -23.667, 0, 0, 0, 0, 250.878, -23.667, 0, 0, 0, 0, 177.861, -28.175, 0, 0, 0, 0, 129.183, -25.921)
+}
+point_count = 7
+
 [node name="Tree" type="Sprite2D"]
 position = Vector2(1008, 1088)
 scale = Vector2(1.06825, 0.887313)
@@ -110,11 +116,6 @@ curve = SubResource("Curve2D_oxjpl")
 [node name="Bird-Right" type="Path2D" parent="."]
 curve = SubResource("Curve2D_01gye")
 
-[node name="Bird" parent="Bird-Right" instance=ExtResource("3_05tgk")]
-position = Vector2(863.094, -1288.16)
-rotation = -1.43641
-scale = Vector2(0.953709, 1)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_fhjnn")
@@ -123,16 +124,8 @@ libraries = {
 [node name="Termite1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_r7wkj")
 
-[node name="TERMITE" parent="Termite1" instance=ExtResource("3_fms5h")]
-position = Vector2(80.5055, -25.921)
-rotation = -2.23432
-
 [node name="Termite2" type="Path2D" parent="."]
 curve = SubResource("Curve2D_r6yjb")
-
-[node name="TERMITE" parent="Termite2" instance=ExtResource("3_fms5h")]
-position = Vector2(39.3167, 116.081)
-rotation = -2.24633
 
 [node name="Termite3" type="Path2D" parent="."]
 curve = SubResource("Curve2D_x6ns3")
@@ -148,3 +141,6 @@ curve = SubResource("Curve2D_ikghd")
 position = Vector2(-924.877, -1134.89)
 rotation = 4.94626
 scale = Vector2(1.93227, -2.38532)
+
+[node name="tim" type="Path2D" parent="."]
+curve = SubResource("Curve2D_u72pu")

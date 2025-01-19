@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxqpygqegs8lo"]
+
+[ext_resource type="Script" path="res://scripts/adult_timmy.gd" id="1_q4vas"]
+[ext_resource type="Texture2D" uid="uid://bod2o7rf10lmw" path="res://Assets/Images/Flux_00039_-removebg-preview.png" id="2_pnfc4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vhne"]
+atlas = ExtResource("2_pnfc4")
+region = Rect2(203, 250, 178, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hauw0"]
+atlas = ExtResource("2_pnfc4")
+region = Rect2(0, 250, 124, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evs6l"]
+atlas = ExtResource("2_pnfc4")
+region = Rect2(112, 243, 101, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77l38"]
+atlas = ExtResource("2_pnfc4")
+region = Rect2(375, 250, 125, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2w5w2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vhne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hauw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evs6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77l38")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Adult Timmy" type="PathFollow2D"]
+script = ExtResource("1_q4vas")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2w5w2")
+frame_progress = 0.856249
