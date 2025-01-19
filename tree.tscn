@@ -1,9 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://bcnu3niqi3vd3"]
+[gd_scene load_steps=15 format=3 uid="uid://bcnu3niqi3vd3"]
 
 [ext_resource type="Texture2D" uid="uid://co2lwhem0m6x7" path="res://Assets/Images/BelowTree1.PNG" id="1_upvdq"]
 [ext_resource type="Script" path="res://scripts/Tree.gd" id="2_kgwrb"]
 [ext_resource type="PackedScene" uid="uid://btmja5arthier" path="res://scenes/bird.tscn" id="3_05tgk"]
 [ext_resource type="PackedScene" uid="uid://bpw83qpni1ym4" path="res://scenes/termite.tscn" id="3_fms5h"]
+[ext_resource type="AudioStream" uid="uid://wc1adcw8kcfm" path="res://Assets/Audio/Attack SFX_squish_V03.1.wav" id="5_ujuyi"]
 
 [sub_resource type="Curve2D" id="Curve2D_oxjpl"]
 _data = {
@@ -141,6 +143,9 @@ curve = SubResource("Curve2D_ikghd")
 position = Vector2(-924.877, -1134.89)
 rotation = 4.94626
 scale = Vector2(1.93227, -2.38532)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ujuyi")
 
 [node name="tim" type="Path2D" parent="."]
 curve = SubResource("Curve2D_u72pu")

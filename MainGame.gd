@@ -1,19 +1,23 @@
 extends Node2D
 
-var treeheight: float = 0 
+#for keeping track of time since start of game
+var delta_time: float = 0
+#Measures height of tree for score purposes 
+var tree_height: float = 0 
 
-var CameraStartOffset: float = 100
+var camera_offset_start: float = 100
 
 var screenheight: float = 0
 var startpan: float = 0
 @onready var tree = $Tree
+var sun_speed 
 
 var is_any_timmy_active:bool=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	%Camera.offset.y = CameraStartOffset
-	
-	%BlackFadeAnimationPlayer.play("fade_to_normal")
+	%Camera.offset.y = camera_offset_start
+
+	$"UI Layer/FadeTransitions/AnimationPlayer".play("fade_to_normal")
 	get_window().position.y = 50 #because the stupid window bar always starts off screen
 func treeHeight():
 	return treeheight
@@ -36,7 +40,7 @@ func _process(delta):
 			%HeightCounter.text = "Height: " + str(round_place(treeheight,2))
 			%Tree.position.y -= delta*50
 
-		%HeightCounter.text = "Height: " + str(round_place(treeheight,2))
+		%HeightCounter.text = "Height: " + str(round_place(tree_height,2))
 		%Tree.position.y -= delta*50
 		
 func round_place(num,places):

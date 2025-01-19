@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://btmja5arthier"]
+[gd_scene load_steps=15 format=3 uid="uid://btmja5arthier"]
 
 [ext_resource type="Texture2D" uid="uid://c0sgoxeplafih" path="res://Assets/Images/Flux_00022_-removebg-preview.png" id="1_28q8t"]
 [ext_resource type="Script" path="res://scripts/bird.gd" id="1_v6vk5"]
+[ext_resource type="AudioStream" uid="uid://dy3lv8k1vo3p6" path="res://Assets/Audio/Attack SFX_Swoosh_V01.wav" id="3_ape22"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3c4cx"]
 atlas = ExtResource("1_28q8t")
@@ -99,3 +100,6 @@ scale = Vector2(-0.0933238, 0.662931)
 position = Vector2(-56.861, 10.3539)
 scale = Vector2(-1.37986, 0.112824)
 shape = SubResource("CircleShape2D_83x0x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ape22")

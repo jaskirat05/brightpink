@@ -133,6 +133,10 @@ func take_damage(amount: int) -> void:
 	else:
 		# If adult Timmy is active, always take damage
 		health -= amount
+	$AudioStreamPlayer.play()
+	health -= amount
+	health = max(0, health)
+	print("Tree took damage! Health: ", health)
 	
 	# Check health thresholds for Timmy spawns
 	if health <= 80 and health > 60 and not has_active_timmy():

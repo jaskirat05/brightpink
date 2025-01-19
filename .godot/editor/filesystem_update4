@@ -1,0 +1,12 @@
+res://Game.tscn
+res://MainGame.tscn
+res://scenes/bird.tscn
+res://scenes/termite.tscn
+res://Collectible.tscn
+res://tree.tscn
+res://BlackFadeBox.gd
+res://title_screen.tscn
+res://title_screen.gd
+res://scripts/Tree.gd
+res://scripts/bird.gd
+res://scripts/TERMITE.gd
