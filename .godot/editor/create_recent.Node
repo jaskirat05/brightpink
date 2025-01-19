@@ -1,0 +1,10 @@
+Path2D
+AnimatedSprite2D
+PathFollow2D
+RichTextLabel
+CollisionShape2D
+Area2D
+Sprite2D
+Node2D
+AnimationPlayer
+AnimatableBody2D
