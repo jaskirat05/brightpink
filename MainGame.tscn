@@ -1,42 +1,108 @@
-[gd_scene load_steps=4 format=3 uid="uid://c644ifemo3t2c"]
+[gd_scene load_steps=9 format=3 uid="uid://c644ifemo3t2c"]
 
 [ext_resource type="Script" path="res://MainGame.gd" id="1_hhc68"]
-[ext_resource type="Texture2D" uid="uid://yj7rsuylbcj2" path="res://Assets/Images/FarBackgroundUnfinished.PNG" id="1_hp4lx"]
 [ext_resource type="FontFile" uid="uid://c5jxdu8llire" path="res://Assets/MotleyForcesRegular-w1rZ3.ttf" id="3_ved3i"]
+[ext_resource type="Texture2D" uid="uid://j12q7vx7d4vq" path="res://Assets/Rough2.PNG" id="4_s2fmt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_msoi1"]
+font = ExtResource("3_ved3i")
+font_size = 33
+
+[sub_resource type="Animation" id="Animation_c4kps"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFadeBox:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4uhl0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFadeBox:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e3tu5"]
+resource_name = "fade_to_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackFadeBox:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ie42"]
+_data = {
+"RESET": SubResource("Animation_4uhl0"),
+"fade_to_black": SubResource("Animation_c4kps"),
+"fade_to_normal": SubResource("Animation_e3tu5")
+}
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_hhc68")
 
-[node name="FarBackgroundUnfinished" type="Sprite2D" parent="."]
-position = Vector2(815, -7101)
-texture = ExtResource("1_hp4lx")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="PictureControl" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="FarBackgroundUnfinished" type="Sprite2D" parent="CanvasLayer/PictureControl"]
+unique_name_in_owner = true
+position = Vector2(-16, -7968)
+texture = ExtResource("4_s2fmt")
+
+[node name="HeightCounter" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 56.0
+offset_right = -39.0
+offset_bottom = 83.0
+grow_horizontal = 0
+text = "Height: 72"
+label_settings = SubResource("LabelSettings_msoi1")
+metadata/_edit_use_anchors_ = true
+
+[node name="BlackFadeBox" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="Button" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 766.0
-offset_top = 564.0
-offset_right = 866.0
-offset_bottom = 664.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Test Button"
-
-[node name="HeightCounter" type="Label" parent="."]
-offset_left = 1370.0
-offset_top = 44.0
-offset_right = 1530.0
-offset_bottom = 88.0
-theme_override_fonts/font = ExtResource("3_ved3i")
-theme_override_font_sizes/font_size = 33
-text = "Height: 72"
-horizontal_alignment = 2
-
-[node name="Timer" type="Timer" parent="HeightCounter"]
-process_callback = 0
-
-[connection signal="timeout" from="HeightCounter/Timer" to="." method="_on_timer_timeout"]
+[node name="BlackFadeAnimationPlayer" type="AnimationPlayer" parent="BlackFadeBox"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_3ie42")
+}
