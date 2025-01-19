@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://denkj75a1je4e"]
+[gd_scene load_steps=4 format=3 uid="uid://c644ifemo3t2c"]
 
-[ext_resource type="PackedScene" uid="uid://clapf8hh0pyj3" path="res://MainGame.tscn" id="1_s5lhg"]
+[ext_resource type="Script" path="res://Game.gd" id="1_18vde"]
+[ext_resource type="PackedScene" uid="uid://emsy0mv7fwlb" path="res://MainGame.tscn" id="1_s5lhg"]
+[ext_resource type="PackedScene" uid="uid://cxk5dgtmm7nc7" path="res://title_screen.tscn" id="2_oayap"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_18vde")
+
+[node name="TitleScreen" parent="." instance=ExtResource("2_oayap")]
 
 [node name="MainGame" parent="." instance=ExtResource("1_s5lhg")]
+script = null
