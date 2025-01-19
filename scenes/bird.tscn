@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=3 uid="uid://btmja5arthier"]
+
+[ext_resource type="Texture2D" uid="uid://c0sgoxeplafih" path="res://Assets/Images/Flux_00022_-removebg-preview.png" id="1_28q8t"]
+[ext_resource type="Script" path="res://scripts/bird.gd" id="1_v6vk5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c4cx"]
+atlas = ExtResource("1_28q8t")
+region = Rect2(0, 0, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y68s7"]
+atlas = ExtResource("1_28q8t")
+region = Rect2(166, 0, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2mqk"]
+atlas = ExtResource("1_28q8t")
+region = Rect2(332, 0, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7dcs"]
+atlas = ExtResource("1_28q8t")
+region = Rect2(0, 166, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq0xq"]
+atlas = ExtResource("1_28q8t")
+region = Rect2(166, 166, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd1xi"]
+atlas = ExtResource("1_28q8t")
+region = Rect2(332, 166, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iano5"]
+atlas = ExtResource("1_28q8t")
+region = Rect2(0, 332, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mjrd"]
+atlas = ExtResource("1_28q8t")
+region = Rect2(166, 332, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_capsp"]
+atlas = ExtResource("1_28q8t")
+region = Rect2(332, 332, 166, 166)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2v2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c4cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y68s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2mqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7dcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq0xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd1xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iano5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mjrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_capsp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83x0x"]
+radius = 353.379
+
+[node name="Bird" type="PathFollow2D"]
+rotation = -1.55509
+scale = Vector2(1.32458, 1.11967)
+rotates = false
+script = ExtResource("1_v6vk5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.54462
+scale = Vector2(0.776794, 1.05838)
+sprite_frames = SubResource("SpriteFrames_c2v2w")
+frame_progress = 0.508116
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = 1.54462
+scale = Vector2(-0.0933238, 0.662931)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-56.861, 10.3539)
+scale = Vector2(-1.37986, 0.112824)
+shape = SubResource("CircleShape2D_83x0x")

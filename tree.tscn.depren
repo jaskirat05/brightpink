@@ -1,21 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcnu3niqi3vd3"]
+[gd_scene load_steps=10 format=3 uid="uid://bcnu3niqi3vd3"]
 
 [ext_resource type="Texture2D" uid="uid://co2lwhem0m6x7" path="res://Assets/Images/BelowTree1.PNG" id="1_upvdq"]
 [ext_resource type="Script" path="res://scripts/Tree.gd" id="2_kgwrb"]
-[ext_resource type="PackedScene" uid="uid://btmja5arthier" path="res://scenes/bird.tscn" id="3_05tgk"]
-[ext_resource type="PackedScene" uid="uid://bpw83qpni1ym4" path="res://scenes/termite.tscn" id="3_fms5h"]
-
-[sub_resource type="Curve2D" id="Curve2D_oxjpl"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -976.363, -564.626, 0, 0, 0, 0, -916.452, -586.039, 0, 0, 0, 0, -855.605, -660.421, 0, 0, 0, 0, -826.586, -728.041, 0, 0, 0, 0, -787.269, -808.058, 0, 0, 0, 0, -776.036, -870.043, 0, 0, 0, 0, -751.697, -845.249, 0, 0, 0, 0, -698.338, -837.36, 0, 0, 0, 0, -648.725, -827.217, 0, 0, 0, 0, -624.386, -776.502, 0, 0, 0, 0, -642.172, -730.295, 0, 0, 0, 0, -613.152, -720.152, 0, 0, 0, 0, -593.494, -751.708, 0, 0, 0, 0, -571.027, -794.534, 0, 0, 0, 0, -553.241, -877.932, 0, 0, 0, 0, -526.094, -928.646, 0, 0, 0, 0, -504.564, -912.869, 0, 0, 0, 0, -499.883, -969.218, 0, 0, 0, 0, -466.183, -1009.79, 0, 0, 0, 0, -441.844, -1006.41, 0, 0, 0, 0, -408.144, -996.266, 0, 0, 0, 0, -388.486, -984.996)
-}
-point_count = 22
-
-[sub_resource type="Curve2D" id="Curve2D_01gye"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 863.094, -1288.16, 0, 0, 0, 0, 774.163, -862.154, 0, 0, 0, 0, 600.047, -1009.79, 0, 0, 0, 0, 477.416, -1148.41, 0, 0, 0, 0, 430.611, -1130.38, 0, 0, 0, 0, 357.594, -1017.68)
-}
-point_count = 6
+[ext_resource type="PackedScene" uid="uid://bpw83qpni1ym4" path="res://scenes/termite.tscn" id="3_mfnhv"]
 
 [sub_resource type="Animation" id="Animation_ti87w"]
 length = 0.001
@@ -91,60 +78,37 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="Curve2D" id="Curve2D_ikghd"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -924.877, -1134.89, 0, 0, 0, 0, -758.25, -910.615, 0, 0, 0, 0, -606.6, -1140.52, 0, 0, 0, 0, -590.686, -1389.59, 0, 0, 0, 0, -352.914, -1290.41, 0, 0, 0, 0, -312.661, -1237.44, 0, 0, 0, 0, -267.728, -1183.35)
-}
-point_count = 7
-
 [node name="Tree" type="Sprite2D"]
 position = Vector2(1008, 1088)
 scale = Vector2(1.06825, 0.887313)
 texture = ExtResource("1_upvdq")
 offset = Vector2(13.1055, -7408.88)
 script = ExtResource("2_kgwrb")
-
-[node name="Bird-Left-2" type="Path2D" parent="."]
-curve = SubResource("Curve2D_oxjpl")
-
-[node name="Bird-Right" type="Path2D" parent="."]
-curve = SubResource("Curve2D_01gye")
-
-[node name="Bird" parent="Bird-Right" instance=ExtResource("3_05tgk")]
-position = Vector2(863.094, -1288.16)
-rotation = -1.43641
-scale = Vector2(0.953709, 1)
+spawn_time_min = null
+spawn_time_max = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_fhjnn")
 }
 
-[node name="Termite1" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_r7wkj")
 
-[node name="TERMITE" parent="Termite1" instance=ExtResource("3_fms5h")]
+[node name="TERMITE" parent="Path2D" instance=ExtResource("3_mfnhv")]
 position = Vector2(80.5055, -25.921)
 rotation = -2.23432
 
-[node name="Termite2" type="Path2D" parent="."]
+[node name="Path2D2" type="Path2D" parent="."]
 curve = SubResource("Curve2D_r6yjb")
 
-[node name="TERMITE" parent="Termite2" instance=ExtResource("3_fms5h")]
+[node name="TERMITE" parent="Path2D2" instance=ExtResource("3_mfnhv")]
 position = Vector2(39.3167, 116.081)
 rotation = -2.24633
 
-[node name="Termite3" type="Path2D" parent="."]
+[node name="Path2D3" type="Path2D" parent="."]
 curve = SubResource("Curve2D_x6ns3")
 
-[node name="TERMITE" parent="Termite3" instance=ExtResource("3_fms5h")]
+[node name="TERMITE" parent="Path2D3" instance=ExtResource("3_mfnhv")]
 position = Vector2(52.4222, 66.4928)
 rotation = -1.58301
-
-[node name="Bird-Left" type="Path2D" parent="."]
-curve = SubResource("Curve2D_ikghd")
-
-[node name="Bird" parent="Bird-Left" instance=ExtResource("3_05tgk")]
-position = Vector2(-924.877, -1134.89)
-rotation = 4.94626
-scale = Vector2(1.93227, -2.38532)

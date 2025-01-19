@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://emsy0mv7fwlb"]
+[gd_scene load_steps=14 format=3 uid="uid://clapf8hh0pyj3"]
 
 [ext_resource type="Script" path="res://MainGame.gd" id="1_hhc68"]
 [ext_resource type="Texture2D" uid="uid://btywvnc7bjr3v" path="res://Assets/Images/BackDrop1.PNG" id="2_32e8k"]
@@ -6,8 +6,8 @@
 [ext_resource type="FontFile" uid="uid://c5jxdu8llire" path="res://Assets/MotleyForcesRegular-w1rZ3.ttf" id="3_ved3i"]
 [ext_resource type="Texture2D" uid="uid://glqx7kked68d" path="res://Assets/Images/Foreground1.PNG" id="4_j0b2r"]
 [ext_resource type="Texture2D" uid="uid://b5qya06k1wt8f" path="res://Assets/Images/Midground1.PNG" id="4_sjgso"]
-[ext_resource type="PackedScene" uid="uid://c5yyn2qxiwtcs" path="res://tree.tscn" id="6_kfsk6"]
-[ext_resource type="PackedScene" uid="uid://bmr3l45hllibk" path="res://Collectible.tscn" id="7_gs5ny"]
+[ext_resource type="PackedScene" uid="uid://bcnu3niqi3vd3" path="res://tree.tscn" id="6_kfsk6"]
+[ext_resource type="PackedScene" path="res://Collectible.tscn" id="7_gs5ny"]
 
 [sub_resource type="Animation" id="Animation_4uhl0"]
 length = 0.001
